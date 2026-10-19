@@ -1,11 +1,15 @@
-<?php define('Arquivo_Usuário', 'Usuários.txt');
-define('Arquivo_Pergunta', 'Perguntas.txt');
-function leitura($arquivo){
+<?php
+define('FILE_USUARIOS', 'usuarios.txt');
+define('FILE_PERGUNTAS', 'perguntas.txt');
+
+function lerDados($arquivo) {
     if (!file_exists($arquivo)) return [];
-    $conteúdo = file_gets_contents($arquivo);
-    if (empty(trim($conteúdo))) return [];
-    return json_decode($conteúdo, true) ?? [];
+    $conteudo = file_get_contents($arquivo);
+    if (empty(trim($conteudo))) return [];
+    return json_decode($conteudo, true) ?? [];
 }
-function salvar($arquivo, $dados){
+
+function salvarDados($arquivo, $dados) {
     file_put_contents($arquivo, json_encode($dados, JSON_PRETTY_PRINT | JSON_UNESCAPED_UNICODE));
-}?>
+}
+?>
